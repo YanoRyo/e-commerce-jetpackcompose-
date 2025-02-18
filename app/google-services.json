@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1004532647488",
+    "firebase_url": "https://traindestinction.firebaseio.com",
+    "project_id": "traindestinction",
+    "storage_bucket": "traindestinction.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1004532647488:android:3da79622fd7b74c96101a5",
+        "android_client_info": {
+          "package_name": "com.example.onlineshopapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1004532647488-tmo2jdc22q2b6pcurb7rpqv9gnshef2s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJD5LZqSNOO6BkHqQH9qKAk66lKPzWkdY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1004532647488-tmo2jdc22q2b6pcurb7rpqv9gnshef2s.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1004532647488-kv55gichf6cadr71cujhm5f47lteu591.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ryo7032.TrainDistinctionApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
