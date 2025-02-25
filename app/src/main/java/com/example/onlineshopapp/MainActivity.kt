@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.example.onlineshopapp.designsystem.theme.OnlineShopAppTheme
-import com.example.onlineshopapp.navigation.EcommerceApp
+import com.example.onlineshopapp.ui.navigation.EcommerceApp
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

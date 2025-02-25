@@ -1,6 +1,5 @@
 package com.example.onlineshopapp.ui.feature.detail.section
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,9 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import coil3.compose.rememberAsyncImagePainter
+import coil3.compose.AsyncImage
+import coil3.request.ImageRequest
 import com.example.onlineshopapp.designsystem.theme.LightGray
 import com.example.onlineshopapp.ui.feature.detail.component.BackButton
 import com.example.onlineshopapp.ui.feature.detail.component.FavoriteButton
@@ -35,8 +36,12 @@ fun HeaderSection(
             .padding(top = 48.dp, bottom = 16.dp)
     ) {
         val (back, favorite, mainImage, thumbnail) = createRefs()
-        Image(
-            painter = rememberAsyncImagePainter(model = selectedImageUrl),
+        val context = LocalContext.current
+
+        AsyncImage(
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(selectedImageUrl)
+                .build(),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -47,7 +52,6 @@ fun HeaderSection(
                     bottom.linkTo(parent.bottom)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
-
                 }
         )
         BackButton(
@@ -77,35 +81,8 @@ fun HeaderSection(
                     end.linkTo(parent.end)
                 }
         ) {
-//            items(imageUrls){
-//                ImageThumbnail(
-//                    imageUrl = it,
-//                    isSelected = selectedImageUrl == it,
-//                    onClick = {
-//                        onImageSelected(it)
-//                    }
-//                )
-//            }
             if (imageUrls.isEmpty()) {
                 item {
-                    ImageThumbnail(
-                        imageUrl = "",
-                        isSelected = false,
-                        onClick = {
-                        }
-                    )
-                    ImageThumbnail(
-                        imageUrl = "",
-                        isSelected = false,
-                        onClick = {
-                        }
-                    )
-                    ImageThumbnail(
-                        imageUrl = "",
-                        isSelected = false,
-                        onClick = {
-                        }
-                    )
                     ImageThumbnail(
                         imageUrl = "",
                         isSelected = false,

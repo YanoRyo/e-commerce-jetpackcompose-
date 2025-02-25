@@ -1,4 +1,4 @@
-package com.example.onlineshopapp.navigation
+package com.example.onlineshopapp.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType

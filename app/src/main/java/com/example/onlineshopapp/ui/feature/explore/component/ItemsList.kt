@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -27,6 +26,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
@@ -62,10 +62,10 @@ fun BestSellerItem(
     Column(
         modifier = Modifier
             .padding(4.dp)
-            .wrapContentHeight()
+            .width(180.dp)
     ) {
         AsyncImage(
-            model = items[pos].imageUrl.firstOrNull(),
+            model = items[pos].picUrl.firstOrNull(),
             contentDescription = null,
             modifier = Modifier
                 .size(180.dp)
@@ -107,10 +107,40 @@ fun BestSellerItem(
         Text(
             text = "$${items[pos].price}",
             color = DarkBrown,
-            textAlign = TextAlign.End,
+            textAlign = TextAlign.Start,
             modifier = Modifier.fillMaxWidth(),
             fontSize = 18.sp,
             fontWeight = FontWeight.SemiBold,
         )
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun BestSellerItemPreview() {
+    val items = listOf(
+        ItemsModel(
+            id = 1,
+            title = "Chocolate cake with cream",
+            description = "This is a dummy item for testing.This is a dummy item for testing.This is a dummy item for testing.This is a dummy item for testing.This is a dummy item for testing.This is a dummy item for testing.",
+            picUrl = arrayListOf(
+                "https://firebasestorage.googleapis.com/v0/b/your-project-id.appspot.com/o/images%2Fchocolate_cake.jpg?alt=media&token=your-token"
+            ),
+            price = 10.99,
+            rating = 4.5,
+            size = ArrayList()
+        ),
+        ItemsModel(
+            id = 2,
+            title = "Strawberry Shortcake",
+            description = "A delicious strawberry shortcake.",
+            picUrl = arrayListOf(
+                "https://firebasestorage.googleapis.com/v0/b/your-project-id.appspot.com/o/images%2Fstrawberry_shortcake.jpg?alt=media&token=your-token"
+            ),
+            price = 12.99,
+            rating = 4.8,
+            size = ArrayList()
+        )
+    )
+    BestSellerItem(items = items, pos = 0, onItemClick = {})
 }

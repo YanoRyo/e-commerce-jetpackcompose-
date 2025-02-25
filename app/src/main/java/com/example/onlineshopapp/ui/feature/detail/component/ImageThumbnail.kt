@@ -1,6 +1,5 @@
 package com.example.onlineshopapp.ui.feature.detail.component
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -13,8 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import coil3.compose.rememberAsyncImagePainter
+import coil3.compose.AsyncImage
+import coil3.request.ImageRequest
+import coil3.request.crossfade
 import com.example.onlineshopapp.designsystem.theme.Green
 import com.example.onlineshopapp.designsystem.theme.LightGray
 
@@ -41,8 +43,11 @@ fun ImageThumbnail(
             .background(backGroundColor, shape = RoundedCornerShape(8.dp))
             .clickable(onClick = onClick)
     ) {
-        Image(
-            painter = rememberAsyncImagePainter(model = imageUrl),
+        AsyncImage(
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(imageUrl)
+                .crossfade(true)
+                .build(),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()

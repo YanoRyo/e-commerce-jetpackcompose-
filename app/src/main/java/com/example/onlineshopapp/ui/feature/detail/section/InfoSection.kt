@@ -54,7 +54,7 @@ fun InfoSection(item: ItemsModel) {
         )
         Row(verticalAlignment = Alignment.CenterVertically) {
             AsyncImage(
-                model = item.imageUrl,
+                model = item.sellerPic,
                 contentDescription = null,
                 modifier = Modifier
                     .size(60.dp)
@@ -92,7 +92,7 @@ fun InfoSectionPreview() {
                 title = "Dummy Item 1",
                 price = 99.99,
                 rating = 4.5,
-                imageUrl = arrayListOf(
+                picUrl = arrayListOf(
                     "https://example.com/image1.jpg",
                     "https://example.com/image2.jpg"
                 ),

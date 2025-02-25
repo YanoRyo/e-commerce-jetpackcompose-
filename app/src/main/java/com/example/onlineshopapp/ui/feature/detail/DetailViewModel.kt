@@ -2,7 +2,6 @@ package com.example.onlineshopapp.ui.feature.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.onlineshopapp.domain.model.ItemsModel
 import com.example.onlineshopapp.domain.repository.DetailRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,12 +13,13 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailViewModel @Inject constructor(
     private val repository: DetailRepository
-): ViewModel() {
-    private val _items = MutableStateFlow<List<ItemsModel>>(emptyList())
-    val items: StateFlow<List<ItemsModel>> = _items
+) : ViewModel() {
 
-    private val _itemsWithKeys = MutableStateFlow<List<Pair<Int, ItemsModel>>>(emptyList())
-    val itemsWithKeys: StateFlow<List<Pair<Int, ItemsModel>>> = _itemsWithKeys
+    // UI の状態を保持する MutableStateFlow
+    private val _uiState = MutableStateFlow<DetailUiState>(DetailUiState.Loading)
+
+    // UI に公開する StateFlow
+    val uiState: StateFlow<DetailUiState> = _uiState
 
     init {
         loadBestSellerDetail()
@@ -30,10 +30,11 @@ class DetailViewModel @Inject constructor(
             repository.loadBestSellerDetail()
                 .catch { e ->
                     // エラー処理
-                    println("Error loading banner: ${e.message}")
+                    _uiState.value =
+                        DetailUiState.Error("Error loading data: ${e.message}")
                 }
                 .collect { itemModels ->
-                    _items.value = itemModels.map { it }
+                    _uiState.value = DetailUiState.Success(itemModels)
                 }
         }
     }

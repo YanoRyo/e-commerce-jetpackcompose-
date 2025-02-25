@@ -71,10 +71,9 @@ fun CategoryItem(
         modifier = Modifier.clickable { onItemClick() },
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // TODO:Firebaseから画像を取得する
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
-                .data(item.imageUrl)
+                .data(item.picUrl)
                 .crossfade(true) // フェードインアニメーションを追加
                 .build(),
             contentDescription = item.title,
@@ -105,7 +104,7 @@ fun CategoryListPreview() {
             item = CategoryModel(
                 id = 1,
                 title = "test",
-                imageUrl = ""
+                picUrl = ""
             ),
             isSelected = true,
             onItemClick = {}

@@ -1,4 +1,4 @@
-package com.example.onlineshopapp.ui.feature.splash
+package com.example.onlineshopapp.ui.splash
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,7 +24,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil3.compose.AsyncImage
 import com.example.onlineshopapp.R
 import com.example.onlineshopapp.designsystem.theme.Brown
 import com.example.onlineshopapp.designsystem.theme.DarkBrown
@@ -33,7 +31,7 @@ import com.example.onlineshopapp.designsystem.theme.Green
 import com.example.onlineshopapp.designsystem.theme.OnlineShopAppTheme
 
 @Composable
-fun SplashScreen(toDashBoard: () -> Unit = {}) {
+fun SplashScreen(onClick: () -> Unit = {}) {
 
     Column(
         modifier = Modifier
@@ -43,7 +41,6 @@ fun SplashScreen(toDashBoard: () -> Unit = {}) {
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
         Image(
             painter = painterResource(R.drawable.splash_logo),
             contentDescription = null,
@@ -74,7 +71,7 @@ fun SplashScreen(toDashBoard: () -> Unit = {}) {
             modifier = Modifier.padding(top = 16.dp)
         )
         Button(
-            onClick = { toDashBoard() },
+            onClick = { onClick() },
             shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Green),
             modifier = Modifier
@@ -105,6 +102,6 @@ fun SplashScreen(toDashBoard: () -> Unit = {}) {
 @Composable
 fun SplashScreenPreview() {
     OnlineShopAppTheme {
-        SplashScreen(toDashBoard = {})
+        SplashScreen(onClick = {})
     }
 }

@@ -1,6 +1,5 @@
 package com.example.onlineshopapp.ui.feature.cart.component
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -23,7 +22,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import coil3.compose.rememberAsyncImagePainter
+import coil3.compose.AsyncImage
+import coil3.request.ImageRequest
+import coil3.request.crossfade
 import com.example.onlineshopapp.designsystem.theme.Green
 import com.example.onlineshopapp.designsystem.theme.LightGray
 import com.example.onlineshopapp.domain.model.ItemsModel
@@ -57,8 +58,28 @@ fun CartItem(
     ) {
         val (imageRef, titleRef, feeEachTimeRef, totalEachItemRef, quantityRef) = createRefs()
 
-        Image(
-            painter = rememberAsyncImagePainter(items[pos].imageUrl.firstOrNull()),
+//        Image(
+//            painter = rememberAsyncImagePainter(items[pos].picUrl.firstOrNull()),
+//            contentDescription = null,
+//            contentScale = ContentScale.Crop,
+//            modifier = Modifier
+//                .size(90.dp)
+//                .background(
+//                    color = LightGray,
+//                    shape = RoundedCornerShape(10.dp)
+//                )
+//                .clip(RoundedCornerShape(10.dp))
+//                .constrainAs(imageRef) {
+//                    top.linkTo(parent.top)
+//                    bottom.linkTo(parent.bottom)
+//                    start.linkTo(parent.start)
+//                }
+//        )
+        AsyncImage(
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(items[pos].picUrl.firstOrNull())
+                .crossfade(true)
+                .build(),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
